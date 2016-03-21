@@ -1,0 +1,3 @@
+socialnet_homepage:
+    path:     /
+    defaults: { _controller: SocialnetBundle:Default:index }
