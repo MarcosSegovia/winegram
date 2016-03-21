@@ -1,5 +1,5 @@
-socialnet:
-    resource: "@SocialnetBundle/Resources/config/routing.yml"
+social_data_pool:
+    resource: "@SocialDataPoolBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

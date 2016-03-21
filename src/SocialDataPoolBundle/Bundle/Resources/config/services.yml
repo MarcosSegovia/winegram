@@ -1,0 +1,4 @@
+services:
+#    social_data_pool.example:
+#        class: SocialDataPoolBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
