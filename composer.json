@@ -27,7 +27,8 @@
         "sensio/distribution-bundle": "^5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
-        "phpunit/phpunit": "5.0.*"
+        "phpunit/phpunit": "5.0.*",
+        "predis/predis": "1.0.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
