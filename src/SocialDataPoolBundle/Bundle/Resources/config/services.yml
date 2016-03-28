@@ -1,4 +1,14 @@
+parameters:
+    redis_host: 127.0.0.1
+    redis_port: 6378
+
 services:
-#    social_data_pool.example:
-#        class: SocialDataPoolBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    redis_client:
+        class: SocialDataPool\Infrastructure\RedisClient
+        arguments:
+            - "@predis"
+    predis:
+        class: Predis\Client
+        arguments:
+            host: %redis_host%
+            port: %redis_port%
