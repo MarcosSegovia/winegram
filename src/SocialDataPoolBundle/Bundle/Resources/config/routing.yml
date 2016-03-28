@@ -1,0 +1,3 @@
+social_data_pool_homepage:
+    path:     /
+    defaults: { _controller: SocialDataPoolBundle:Default:index }
