@@ -20,7 +20,7 @@ class RedisClient implements RedisClientInterface
 	)
 	{
 		$command_set = $this->redis_client->createCommand('set');
-		$command_set->setArgumentsArray(array($key, $value));
+		$command_set->setArguments(array($key, $value));
 
 		return $this->redis_client->executeCommand($command_set);
 	}
@@ -28,7 +28,7 @@ class RedisClient implements RedisClientInterface
 	public function get($key)
 	{
 		$command_get = $this->redis_client->createCommand('get');
-		$command_get->setArgumentsArray(array($key));
+		$command_get->setArguments(array($key));
 
 		return $this->redis_client->executeCommand($command_get);
 	}

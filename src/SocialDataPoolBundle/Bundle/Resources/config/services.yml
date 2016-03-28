@@ -1,8 +1,16 @@
 parameters:
-    redis_host: 127.0.0.1
-    redis_port: 6378
-
+    redis_parameters:
+        scheme:
+            - tcp
+        host:
+            - 127.0.0.1
+        psot:
+            - 6378
 services:
+    tweet_repository:
+        class: SocialDataPool\Infrastructure\Repository\Twitter\TweetRepository
+        arguments:
+            - "@redis_client"
     redis_client:
         class: SocialDataPool\Infrastructure\Redis\RedisClient
         arguments:
@@ -10,5 +18,4 @@ services:
     predis:
         class: Predis\Client
         arguments:
-            host: %redis_host%
-            port: %redis_port%
+            - redis_parameters
