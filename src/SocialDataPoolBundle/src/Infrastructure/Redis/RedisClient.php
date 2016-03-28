@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDataPool\Infrastructure;
+namespace SocialDataPool\Infrastructure\Redis;
 
 use Predis\Client;
 use SocialDataPool\Domain\Infrastructure\RedisClientInterface;

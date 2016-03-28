@@ -4,7 +4,7 @@ parameters:
 
 services:
     redis_client:
-        class: SocialDataPool\Infrastructure\RedisClient
+        class: SocialDataPool\Infrastructure\Redis\RedisClient
         arguments:
             - "@predis"
     predis:
