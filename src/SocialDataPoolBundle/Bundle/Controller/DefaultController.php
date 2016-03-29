@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
 
-	public function indexAction()
-	{
-		$repository = $this->container->get('tweet_repository');
-		
+    public function indexAction()
+    {
+        $repository = $this->container->get('tweet_repository');
 
-		return new JsonResponse(array('message' => 'OK'));
-	}
+
+        return new JsonResponse(array('message' => 'OK'));
+    }
 
 }
