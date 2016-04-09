@@ -16,6 +16,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new SocialDataPoolBundle\Bundle\SocialDataPoolBundle(),
+            new SqsPhpBundle\SqsPhpBundle(),
+            new MarcosSegovia\TwitterApiClientBundle\TwitterApiClientBundle()
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
