@@ -17,3 +17,8 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
+
+    twitter_api_key: your_api_key
+    twitter_api_secret: your_api_secret
+
+    sqs_url: the_url_of_the_sql_queue
