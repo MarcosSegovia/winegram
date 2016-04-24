@@ -14,23 +14,28 @@ class RedisClient implements RedisClientInterface
         $this->redis_client = $a_redis_client;
     }
 
+    public function delete($a_key)
+    {
+        $this->redis_client->del([$a_key]);
+    }
+
+    public function exists($a_key)
+    {
+        $this->redis_client->exists($a_key);
+    }
+
+    public function get($a_key)
+    {
+        return $this->redis_client->get($key);
+    }
+
     public function set(
-        $key,
-        $value
+        $a_key,
+        $a_value,
+        $a_ttl = null
     )
     {
-        $command_set = $this->redis_client->createCommand('set');
-        $command_set->setArguments(array($key, $value));
-
-        return $this->redis_client->executeCommand($command_set);
+        $this->redis_client->set($a_key, $a_value);
+        $this->redis_client->expire($a_key, $a_ttl);
     }
-
-    public function get($key)
-    {
-        $command_get = $this->redis_client->createCommand('get');
-        $command_get->setArguments(array($key));
-
-        return $this->redis_client->executeCommand($command_get);
-    }
-
 }

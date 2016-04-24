@@ -17,5 +17,6 @@ services:
             - "@predis"
     predis:
         class: Predis\Client
+        public: false
         arguments:
             - redis_parameters
