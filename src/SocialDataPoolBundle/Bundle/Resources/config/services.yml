@@ -1,14 +1,25 @@
-parameters:
-    redis_parameters:
-        scheme:
-            - tcp
-        host:
-            - 127.0.0.1
-        psot:
-            - 6378
 services:
-    tweet_repository:
-        class: SocialDataPool\Infrastructure\Repository\Twitter\TweetRepository
+    look_for_tweet_use_case:
+        class: SocialDataPool\Application\Service\Core\WithEventHandling
+        arguments:
+            - "@look_for_tweet_use_case_original"
+            - "@sqs_php.client"
+    look_for_tweet_use_case_original:
+        class: SocialDataPool\Application\Service\Tweet\LookForTweet
+        public: false
+        arguments:
+            - "@twitter_api_client"
+            - "@tweet_processor"
+    tweet_processor:
+        class: SocialDataPool\Domain\Service\TweetProcessor
+        arguments:
+            - "@tweet_writer"
+    tweet_writer:
+        class: SocialDataPool\Infrastructure\Repository\Twitter\RedisTweetWriter
+        arguments:
+            - "@redis_client"
+    tweet_reader:
+        class: SocialDataPool\Infrastructure\Repository\Twitter\RedisTweetReader
         arguments:
             - "@redis_client"
     redis_client:
@@ -19,4 +30,4 @@ services:
         class: Predis\Client
         public: false
         arguments:
-            - redis_parameters
+            - "%redis_parameters%"
