@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/MarcosSegovia/winegram.svg?branch=master)](https://travis-ci.org/MarcosSegovia/winegram)
+[![Build Status](https://travis-ci.org/MarcosSegovia/winegram_social_data_pool.svg?branch=master)](https://travis-ci.org/MarcosSegovia/winegram_social_data_pool)
 
 Winegram
 ========
