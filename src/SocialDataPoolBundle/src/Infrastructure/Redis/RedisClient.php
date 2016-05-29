@@ -38,4 +38,39 @@ class RedisClient implements RedisClientInterface
         $this->redis_client->set($a_key, $a_value);
         $this->redis_client->expire($a_key, $a_ttl);
     }
+
+    public function zincrby($key, $increment, $member)
+    {
+        $this->redis_client->zincrby($key, $increment, $member);
+    }
+    
+    public function zadd($key, array $key_value_members)
+    {
+        $this->redis_client->zadd($key, $key_value_members);
+    }
+
+    public function rpush($key, array $values)
+    {
+        $this->redis_client->rpush($key, $values);
+    }
+
+    public function lpush($key, array $values)
+    {
+        $this->redis_client->lpush($key, $values);
+    }
+
+    public function lrange($key, $start, $stop)
+    {
+        $this->redis_client->lrange($key, $start, $stop);
+    }
+    
+    public function lrem($key, $count, $value)
+    {
+        $this->redis_client->lrem($key, $count, $value);
+    }
+
+    public function lpop($key)
+    {
+        $this->redis_client->lpop($key);
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDataPool\Domain\Entity\Tweet\Exception;
+namespace SocialDataPool\Domain\Model\Tweet\Exception;
 
 class InvalidTweetArgumentProvided extends \Exception
 {
