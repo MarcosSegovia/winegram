@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "322d73bf4432471ad6e11fef5c9465e5",
-    "content-hash": "c9deeb9dc03d2b44cc2d4faee2b49965",
+    "hash": "b0b25c8536db17f06002e9508f818127",
+    "content-hash": "2989393d08feb763a76aa4e6bd57b98b",
     "packages": [
         {
             "name": "albhilazo/sqs-php-bundle",
@@ -1354,22 +1354,25 @@
         },
         {
             "name": "marcossegovia/php-twitter-api-client",
-            "version": "dev-master",
+            "version": "1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarcosSegovia/php-twitter-api-client.git",
-                "reference": "583631be3e60e00cbbed63263e917e3a321e7b0f"
+                "reference": "d5fe2c91ff524911243e61ce1873bd25009bee6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarcosSegovia/php-twitter-api-client/zipball/583631be3e60e00cbbed63263e917e3a321e7b0f",
-                "reference": "583631be3e60e00cbbed63263e917e3a321e7b0f",
+                "url": "https://api.github.com/repos/MarcosSegovia/php-twitter-api-client/zipball/d5fe2c91ff524911243e61ce1873bd25009bee6b",
+                "reference": "d5fe2c91ff524911243e61ce1873bd25009bee6b",
                 "shasum": ""
             },
             "require": {
                 "commerceguys/guzzle-oauth2-plugin": "^2.0",
                 "guzzlehttp/guzzle": "^5.0",
-                "php": ">=5.6",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "behat/behat": "3.1.*",
                 "phpunit/phpunit": "^5.0"
             },
             "type": "library",
@@ -1400,24 +1403,24 @@
                 "oauth 2.0",
                 "twitter"
             ],
-            "time": "2016-04-03 18:20:07"
+            "time": "2016-05-29 16:49:09"
         },
         {
             "name": "marcossegovia/twitter-api-client-bundle",
-            "version": "dev-master",
+            "version": "v1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarcosSegovia/twitter-api-client-bundle.git",
-                "reference": "98a80f3461c38e168ff00d77708ad4d115338490"
+                "reference": "72def75dfe08d7b8645150755358844e5f869209"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MarcosSegovia/twitter-api-client-bundle/zipball/98a80f3461c38e168ff00d77708ad4d115338490",
-                "reference": "98a80f3461c38e168ff00d77708ad4d115338490",
+                "url": "https://api.github.com/repos/MarcosSegovia/twitter-api-client-bundle/zipball/72def75dfe08d7b8645150755358844e5f869209",
+                "reference": "72def75dfe08d7b8645150755358844e5f869209",
                 "shasum": ""
             },
             "require": {
-                "marcossegovia/php-twitter-api-client": "dev-master",
+                "marcossegovia/php-twitter-api-client": "1.*",
                 "php": ">=5.6"
             },
             "require-dev": {
@@ -1453,7 +1456,7 @@
                 "symfony",
                 "twitter"
             ],
-            "time": "2016-04-09 14:19:22"
+            "time": "2016-05-29 16:57:55"
         },
         {
             "name": "monolog/monolog",
@@ -3711,9 +3714,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "albhilazo/sqs-php-bundle": 20,
-        "marcossegovia/twitter-api-client-bundle": 20,
-        "marcossegovia/php-twitter-api-client": 20
+        "albhilazo/sqs-php-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

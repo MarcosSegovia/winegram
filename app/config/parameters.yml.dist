@@ -22,3 +22,5 @@ parameters:
     twitter_api_secret: your_api_secret
 
     sqs_url: the_url_of_the_sql_queue
+
+    redis_parameters: scheme_and_ip_and_port

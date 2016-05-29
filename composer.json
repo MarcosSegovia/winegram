@@ -37,8 +37,7 @@
         "phpunit/phpunit": "5.0.*",
         "predis/predis": "1.0.*",
         "albhilazo/sqs-php-bundle": "dev-master",
-        "marcossegovia/twitter-api-client-bundle": "dev-master",
-        "marcossegovia/php-twitter-api-client": "@dev"
+        "marcossegovia/twitter-api-client-bundle": "1.*"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
