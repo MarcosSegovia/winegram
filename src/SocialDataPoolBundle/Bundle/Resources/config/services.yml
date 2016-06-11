@@ -31,3 +31,11 @@ services:
         public: false
         arguments:
             - "%redis_parameters%"
+    instagram_authentication_controller:
+        class: SocialDataPoolBundle\Bundle\Controller\InstagramAuthenticationController
+    instagram_client:
+        class: SocialDataPool\Infrastructure\Api\Instagram\Client
+        arguments:
+            - "%instagram_client_id%"
+            - "%instagram_client_secret%"
+            - "http://ubuntu.dev/winegram_social_data_pool/web/app_dev.php/instagram/code"

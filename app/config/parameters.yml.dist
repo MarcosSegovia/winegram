@@ -21,6 +21,9 @@ parameters:
     twitter_api_key: your_api_key
     twitter_api_secret: your_api_secret
 
+    instagram_client_id: your_instagram_client_id
+    instagram_client_secret: your_instagram_client_secret
+
     sqs_url: the_url_of_the_sql_queue
 
     redis_parameters: scheme_and_ip_and_port

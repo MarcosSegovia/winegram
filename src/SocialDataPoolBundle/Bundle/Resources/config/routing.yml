@@ -1,3 +1,19 @@
 social_data_pool_homepage:
     path:     /
     defaults: { _controller: "SocialDataPoolBundle:Default:index" }
+
+social_data_pool_instagram:
+    path:     /test
+    defaults: { _controller: "SocialDataPoolBundle:Default:index2" }
+
+social_data_pool_twitter:
+    path: /twitter
+    defaults: { _controller: "SocialDataPoolBundle:Default:index" }
+
+instagram_authentication_start:
+    path: /instagram
+    defaults: { _controller: "SocialDataPoolBundle:InstagramAuthentication:index" }
+
+instagram_authentication_code:
+    path: /instagram/code
+    defaults: { _controller: "SocialDataPoolBundle:InstagramAuthentication:code" }
