@@ -7,19 +7,24 @@ use SocialDataPool\Infrastructure\EventQueue\DomainEventRecorder;
 
 final class Tweet
 {
+    const TWITTER_TYPE = 'tweet';
+
     /** @var string */
     private $id;
-    
+
     /** @var mixed */
     private $associated_data;
 
-    public function __construct($an_id, $some_new_associated_data)
+    public function __construct(
+        $an_id,
+        $some_new_associated_data
+    )
     {
-        if(empty($an_id) || null === $an_id)
+        if (empty($an_id) || null === $an_id)
         {
             throw new InvalidTweetDataProvided();
         }
-        if(empty($some_new_associated_data) || null === $some_new_associated_data)
+        if (empty($some_new_associated_data) || null === $some_new_associated_data)
         {
             throw new InvalidTweetDataProvided();
         }
@@ -28,7 +33,7 @@ final class Tweet
 
         DomainEventRecorder::instance()->recordMessage(new TweetCreated($an_id));
     }
-    
+
     public function id()
     {
         return $this->id;

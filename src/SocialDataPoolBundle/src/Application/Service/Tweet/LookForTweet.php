@@ -4,14 +4,14 @@ namespace SocialDataPool\Application\Service\Tweet;
 
 use MarcosSegovia\Twitter\TwitterApiClient;
 use SocialDataPool\Application\Service\Core\ApplicationService;
-use SocialDataPool\Domain\Service\TweetProcessor;
+use SocialDataPool\Domain\Service\Twitter\TweetProcessor;
 
 final class LookForTweet implements ApplicationService
 {
     /** @var TwitterApiClient */
     private $api_client;
 
-    /** @var TweetProcessor */
+    /** @var \SocialDataPool\Domain\Service\Twitter\TweetProcessor */
     private $tweet_processor;
 
     public function __construct(

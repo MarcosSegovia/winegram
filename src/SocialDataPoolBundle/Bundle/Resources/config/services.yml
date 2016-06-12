@@ -11,10 +11,13 @@ services:
             - "@twitter_api_client"
             - "@tweet_processor"
     tweet_processor:
-        class: SocialDataPool\Domain\Service\TweetProcessor
+        class: SocialDataPool\Domain\Service\Twitter\TweetProcessor
         arguments:
             - "@tweet_writer"
             - "@tweet_reader"
+            - "@twitter_json_adapter"
+    twitter_json_adapter:
+        class: SocialDataPool\Domain\Service\Twitter\Adapter\JsonAdapter
     tweet_writer:
         class: SocialDataPool\Infrastructure\Repository\Twitter\RedisTweetWriter
         arguments:

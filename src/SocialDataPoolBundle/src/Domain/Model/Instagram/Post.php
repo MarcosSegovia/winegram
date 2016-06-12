@@ -2,12 +2,14 @@
 
 namespace SocialDataPool\Domain\Model\Instagram;
 
-use SocialDataPool\Domain\Model\Core\Exception\InvalidSocialArgumentProvided;
+use SocialDataPool\Domain\Model\Core\Social;
 use SocialDataPool\Domain\Model\Instagram\Exception\InvalidInstagramPostDataProvided;
 use SocialDataPool\Infrastructure\EventQueue\DomainEventRecorder;
 
 final class Post
 {
+    const INSTAGRAM_TYPE = 'instagram_post';
+
     /** @var string */
     private $id;
 
@@ -27,7 +29,7 @@ final class Post
         {
             throw new InvalidInstagramPostDataProvided();
         }
-        $this->id = $an_id;
+        $this->id              = $an_id;
         $this->associated_data = $some_new_associated_data;
 
         DomainEventRecorder::instance()->recordMessage(new InstagramPostCreated($an_id));
