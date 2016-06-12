@@ -245,7 +245,7 @@ class Client
 
         $paramString = null;
 
-        if (isset($params) && is_array($params))
+        if (isset($params) && is_array($params) && !empty($params))
         {
             $paramString = '&' . http_build_query($params);
         }

@@ -2,12 +2,12 @@
 
 namespace SocialDataPool\Domain\Model\Tweet;
 
-use SocialDataPool\Domain\Model\Tweet\Exception\InvalidDataProvided;
+use SocialDataPool\Domain\Model\Tweet\Exception\InvalidTweetDataProvided;
 use SocialDataPool\Infrastructure\EventQueue\DomainEventRecorder;
 
 final class Tweet
 {
-    /** @var integer */
+    /** @var string */
     private $id;
     
     /** @var mixed */
@@ -17,11 +17,11 @@ final class Tweet
     {
         if(empty($an_id) || null === $an_id)
         {
-            throw new InvalidDataProvided();
+            throw new InvalidTweetDataProvided();
         }
         if(empty($some_new_associated_data) || null === $some_new_associated_data)
         {
-            throw new InvalidDataProvided();
+            throw new InvalidTweetDataProvided();
         }
         $this->id = $an_id;
         $this->associated_data = $some_new_associated_data;

@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialDataPool\Domain\Repository;
+namespace SocialDataPool\Domain\Repository\Twitter;
 
 use SocialDataPool\Domain\Model\Tweet\Tweet;
 

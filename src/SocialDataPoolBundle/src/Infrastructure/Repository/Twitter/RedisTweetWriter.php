@@ -4,7 +4,7 @@ namespace SocialDataPool\Infrastructure\Repository\Twitter;
 
 use SocialDataPool\Domain\Model\Tweet\Tweet;
 use SocialDataPool\Domain\Infrastructure\RedisClientInterface;
-use SocialDataPool\Domain\Repository\TweetWriterInterface;
+use SocialDataPool\Domain\Repository\Twitter\TweetWriterInterface;
 
 final class RedisTweetWriter implements TweetWriterInterface
 {

@@ -3,7 +3,7 @@
 namespace SocialDataPool\Infrastructure\Repository\Twitter;
 
 use SocialDataPool\Domain\Infrastructure\RedisClientInterface;
-use SocialDataPool\Domain\Repository\TweetReaderInterface;
+use SocialDataPool\Domain\Repository\Twitter\TweetReaderInterface;
 
 class RedisTweetReader implements TweetReaderInterface
 {
