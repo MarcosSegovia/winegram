@@ -14,6 +14,7 @@ services:
         class: SocialDataPool\Domain\Service\TweetProcessor
         arguments:
             - "@tweet_writer"
+            - "@tweet_reader"
     tweet_writer:
         class: SocialDataPool\Infrastructure\Repository\Twitter\RedisTweetWriter
         arguments:

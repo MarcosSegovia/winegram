@@ -21,7 +21,7 @@ class RedisClient implements RedisClientInterface
 
     public function exists($a_key)
     {
-        $this->redis_client->exists($a_key);
+        return $this->redis_client->exists($a_key);
     }
 
     public function get($a_key)
