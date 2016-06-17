@@ -14,7 +14,7 @@ final class WithEventHandling implements ApplicationService
     /** @var Client */
     private $sqs_client;
 
-    const QUEUE = 'tweets_queue';
+    const QUEUE = 'social_queue';
 
     public function __construct(
         ApplicationService $an_application_service,
@@ -41,7 +41,6 @@ final class WithEventHandling implements ApplicationService
 
     private function handleEventMessage(DomainEvent $event)
     {
-
         $this->sqs_client->send(self::QUEUE, [$event->occurredAt(), $event->eventName()]);
     }
 }

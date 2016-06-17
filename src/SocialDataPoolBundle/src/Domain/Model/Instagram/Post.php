@@ -34,4 +34,14 @@ final class Post
 
         DomainEventRecorder::instance()->recordMessage(new InstagramPostCreated($an_id));
     }
+
+    public function id()
+    {
+        return $this->id;
+    }
+
+    public function associatedData()
+    {
+        return $this->associated_data;
+    }
 }

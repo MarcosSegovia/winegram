@@ -8,7 +8,7 @@ abstract class DomainEvent
     private $occurred_at;
     
     /** @var string */
-    private $event_name;
+    protected $event_name;
 
     public function __construct()
     {

@@ -5,7 +5,7 @@ namespace SocialDataPool\Domain\Service\Twitter;
 use SocialDataPool\Domain\Model\Tweet\Tweet;
 use SocialDataPool\Domain\Repository\Twitter\TweetReaderInterface;
 use SocialDataPool\Domain\Repository\Twitter\TweetWriterInterface;
-use SocialDataPool\Domain\Service\Twitter\Adapter\JsonAdapter;
+use SocialDataPool\Infrastructure\Service\Adapter\Twitter\JsonAdapter;
 
 final class TweetProcessor
 {
@@ -29,16 +29,16 @@ final class TweetProcessor
         $this->json_twitter_adapter = $a_json_twitter_adapter;
     }
 
-    public function __invoke($all_tweets_to_process)
+    public function __invoke($all_raw_tweets_to_process)
     {
-        foreach ($all_tweets_to_process['statuses'] as $tweet_info)
+        foreach ($all_raw_tweets_to_process['statuses'] as $tweet_raw_info)
         {
-            if ($this->tweet_reader->checkIfTweetIdHasBeenAlreadyProcessed($tweet_info['id_str']))
+            if ($this->tweet_reader->checkIfTweetIdHasBeenAlreadyProcessed($tweet_raw_info['id_str']))
             {
                 continue;
             }
-            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_info);
-            $a_new_tweet_to_persist    = new Tweet($tweet_info['id_str'], $tweet_information_encoded);
+            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_raw_info);
+            $a_new_tweet_to_persist    = new Tweet($tweet_raw_info['id_str'], $tweet_information_encoded);
             $this->tweet_writer->persistNewTweet($a_new_tweet_to_persist);
             $this->tweet_writer->tagTweetAsRead($a_new_tweet_to_persist);
         }

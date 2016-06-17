@@ -70,7 +70,7 @@ swiftmailer:
 #SQS
 sqs_php:
     queues:
-        tweets_queue:
+        social_queue:
             url: %sqs_url%
 
 #Twitter API

@@ -1,4 +1,30 @@
 services:
+    look_for_instagram_post_use_case:
+        class: SocialDataPool\Application\Service\Core\WithEventHandling
+        arguments:
+            - "@look_for_instagram_post_use_case_original"
+            - "@sqs_php.client"
+    look_for_instagram_post_use_case_original:
+        class: SocialDataPool\Application\Service\Instagram\LookForInstagramPost
+        arguments:
+            - "@instagram_client"
+            - "@instagram_processor"
+    instagram_processor:
+        class: SocialDataPool\Domain\Service\Instagram\InstagramPostProcessor
+        arguments:
+            - "@instagram_writer"
+            - "@instagram_reader"
+            - "@instagram_json_adapter"
+    instagram_json_adapter:
+        class: SocialDataPool\Infrastructure\Service\Adapter\Instagram\JsonAdapter
+    instagram_writer:
+        class: SocialDataPool\Infrastructure\Repository\Instagram\RedisInstagramWriter
+        arguments:
+            - "@redis_client"
+    instagram_reader:
+        class: SocialDataPool\Infrastructure\Repository\Instagram\RedisInstagramReader
+        arguments:
+            - "@redis_client"
     look_for_tweet_use_case:
         class: SocialDataPool\Application\Service\Core\WithEventHandling
         arguments:
@@ -17,7 +43,7 @@ services:
             - "@tweet_reader"
             - "@twitter_json_adapter"
     twitter_json_adapter:
-        class: SocialDataPool\Domain\Service\Twitter\Adapter\JsonAdapter
+        class: SocialDataPool\Infrastructure\Service\Adapter\Twitter\JsonAdapter
     tweet_writer:
         class: SocialDataPool\Infrastructure\Repository\Twitter\RedisTweetWriter
         arguments:

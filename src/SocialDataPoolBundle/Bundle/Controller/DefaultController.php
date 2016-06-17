@@ -22,15 +22,15 @@ class DefaultController extends Controller
     public function index2Action()
     {
         $session_service = $this->get('session');
-        if(!$session_service->isStarted() || $session_service->has('instagram_token'))
+        if(!$session_service->isStarted() || !$session_service->has('instagram_token'))
         {
-            $this->redirect('instagram_authentication_start');
+            $this->forward('SocialDataPoolBundle:InstagramAuthentication:index');
         }
 
         $instagram_client = $this->get('instagram_client');
         $instagram_client->setAccessToken($session_service->get('instagram_token'));
-        dump($instagram_client->searchTags('pruno'));
-
+        dump($instagram_client->getTagMedia('vino'));
+        
         return new Response('OK');
     }
 

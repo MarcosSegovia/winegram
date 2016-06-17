@@ -11,9 +11,6 @@ final class InstagramPostCreated extends DomainEvent
     /** @var string */
     private $id;
 
-    /** @var string */
-    private $event_name;
-
     public function __construct($an_id)
     {
         parent::__construct();

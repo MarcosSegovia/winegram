@@ -23,6 +23,7 @@ parameters:
 
     instagram_client_id: your_instagram_client_id
     instagram_client_secret: your_instagram_client_secret
+    instagram_token: your_instagram_token
 
     sqs_url: the_url_of_the_sql_queue
 
