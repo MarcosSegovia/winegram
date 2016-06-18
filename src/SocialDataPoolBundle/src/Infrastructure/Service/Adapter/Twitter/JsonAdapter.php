@@ -16,7 +16,9 @@ final class JsonAdapter
         $this->my_array_of_social_data['id']   = $a_twitter_response_to_adapt['id_str'];
         $this->my_array_of_social_data['type'] = Tweet::TWITTER_TYPE;
         $this->my_array_of_social_data['text'] = $a_twitter_response_to_adapt['text'];
-        
+        $this->my_array_of_social_data['retweet_count'] = $a_twitter_response_to_adapt['retweet_count'];
+        $this->my_array_of_social_data['favorite_count'] = $a_twitter_response_to_adapt['favorite_count'];
+
         foreach ($a_twitter_response_to_adapt['entities']['hashtags'] as $current_hashtag)
         {
             $this->my_array_of_social_data['tags'][] = $current_hashtag['text'];
