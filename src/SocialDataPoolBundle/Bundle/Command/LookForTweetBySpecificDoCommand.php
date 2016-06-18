@@ -35,15 +35,13 @@ final class LookForTweetBySpecificDoCommand extends ContainerAwareCommand
         OutputInterface $output
     )
     {
-        /** @var GetSpecificDo */
         $uvinum_use_case = $this->getContainer()->get('get_specific_do_use_case');
-        /** @var LookForTweet $use_case */
-        $use_case = $this->getContainer()->get('look_for_tweet_use_case');
+        $use_case        = $this->getContainer()->get('look_for_tweet_use_case');
 
         $offset           = $input->getArgument('offset');
         $number_of_tweets = $input->getArgument('number_of_tweets');
 
-        $uvinum_request                 = new GetSpecificDoRequest($offset);
+        $uvinum_request            = new GetSpecificDoRequest($offset);
         $specific_do_to_search_for = $uvinum_use_case->__invoke($uvinum_request);
 
         $output->writeln('Searching tweets that contains: ' . $specific_do_to_search_for);

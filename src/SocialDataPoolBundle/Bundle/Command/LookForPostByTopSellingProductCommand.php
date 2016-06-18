@@ -36,9 +36,7 @@ final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
         OutputInterface $output
     )
     {
-        /** @var GetTopSellingProduct */
-        $uvinum_use_case = $this->getContainer()->get('get_top_selling_product_use_case');
-        /** @var LookForInstagramPost */
+        $uvinum_use_case    = $this->getContainer()->get('get_top_selling_product_use_case');
         $instagram_use_case = $this->getContainer()->get('look_for_instagram_post_use_case');
         $instagram_client   = $this->getContainer()->get('instagram_api_client');
         $token              = $this->getContainer()->getParameter('instagram_token');

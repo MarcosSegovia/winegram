@@ -40,10 +40,8 @@ final class LookForTweetByTopSellingProductCommand extends ContainerAwareCommand
         OutputInterface $output
     )
     {
-        /** @var GetTopSellingProduct */
         $uvinum_use_case = $this->getContainer()->get('get_top_selling_product_use_case');
-        /** @var LookForTweet $use_case */
-        $use_case = $this->getContainer()->get('look_for_tweet_use_case');
+        $use_case        = $this->getContainer()->get('look_for_tweet_use_case');
 
         $wine_type        = $input->getArgument('wine-type');
         $offset           = $input->getArgument('offset');

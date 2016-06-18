@@ -38,14 +38,13 @@ final class LookForTweetCommand extends ContainerAwareCommand
         OutputInterface $output
     )
     {
-        /** @var LookForTweet $use_case */
         $use_case = $this->getContainer()->get('look_for_tweet_use_case');
 
         $query    = $input->getArgument('query');
         $count    = $input->getArgument('count');
         $language = $input->getArgument('language');
 
-        $request = $this->buildRequest($query,$count, $language);
+        $request = $this->buildRequest($query, $count, $language);
 
         $use_case->__invoke($request);
 

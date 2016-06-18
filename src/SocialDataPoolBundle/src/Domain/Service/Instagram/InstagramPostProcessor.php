@@ -38,7 +38,7 @@ final class InstagramPostProcessor
                 continue;
             }
             $post_information_encoded = $this->json_instagram_adapter->__invoke($raw_instagram_post);
-            $a_new_post_to_persist = new Post($raw_instagram_post->id, $post_information_encoded);
+            $a_new_post_to_persist    = new Post($raw_instagram_post->id, $post_information_encoded);
             $this->instagram_posts_writer->persistNewPost($a_new_post_to_persist);
             $this->instagram_posts_writer->tagPostAsRead($a_new_post_to_persist);
         }

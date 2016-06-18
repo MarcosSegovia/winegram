@@ -28,16 +28,15 @@ final class LookForPostCommand extends ContainerAwareCommand
         OutputInterface $output
     )
     {
-        /** @var LookForInstagramPost $use_case */
         $use_case = $this->getContainer()->get('look_for_instagram_post_use_case');
 
-        $query    = $input->getArgument('query');
+        $query = $input->getArgument('query');
 
         $instagram_client = $this->getContainer()->get('instagram_api_client');
-        $token = $this->getContainer()->getParameter('instagram_token');
+        $token            = $this->getContainer()->getParameter('instagram_token');
         $instagram_client->setAccessToken($token);
-        $request = new LookForInstagramPostRequest($query);
 
+        $request = new LookForInstagramPostRequest($query);
         $use_case->__invoke($request);
 
         $output->writeln('Instagram Posts Processed');
