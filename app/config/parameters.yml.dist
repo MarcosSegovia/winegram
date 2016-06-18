@@ -25,6 +25,8 @@ parameters:
     instagram_client_secret: your_instagram_client_secret
     instagram_token: your_instagram_token
 
+    uvinum_api_key: your_uvinum_api_key
+
     sqs_url: the_url_of_the_sql_queue
 
     redis_parameters: scheme_and_ip_and_port

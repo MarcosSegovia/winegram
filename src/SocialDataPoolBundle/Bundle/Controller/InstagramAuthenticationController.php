@@ -13,7 +13,7 @@ final class InstagramAuthenticationController extends Controller
     {
         $this->get('session')->start();
 
-        $instagram_client = $this->get('instagram_client');
+        $instagram_client = $this->get('instagram_api_client');
         $login_url        = $instagram_client->getLoginUrl(['basic', 'public_content']);
 
         return $this->redirect($login_url);
@@ -24,7 +24,7 @@ final class InstagramAuthenticationController extends Controller
         if (null !== $request->query->get('code'))
         {
             $current_code     = $request->query->get('code');
-            $instagram_client = $this->get('instagram_client');
+            $instagram_client = $this->get('instagram_api_client');
             $this->get('session')->set('instagram_token', $instagram_client->getOAuthToken($current_code));
             return $this->redirectToRoute('social_data_pool_instagram');
         }

@@ -9,7 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-final class LookForInstagramPostCommand extends ContainerAwareCommand
+final class LookForPostCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -22,7 +22,7 @@ final class LookForInstagramPostCommand extends ContainerAwareCommand
                 'The string you want to search for'
             );
     }
-    
+
     protected function execute(
         InputInterface $input,
         OutputInterface $output
@@ -33,7 +33,7 @@ final class LookForInstagramPostCommand extends ContainerAwareCommand
 
         $query    = $input->getArgument('query');
 
-        $instagram_client = $this->getContainer()->get('instagram_client');
+        $instagram_client = $this->getContainer()->get('instagram_api_client');
         $token = $this->getContainer()->getParameter('instagram_token');
         $instagram_client->setAccessToken($token);
         $request = new LookForInstagramPostRequest($query);

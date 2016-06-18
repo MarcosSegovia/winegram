@@ -1,4 +1,8 @@
 services:
+    get_top_selling_products_use_case:
+        class: SocialDataPool\Application\Service\Uvinum\GetTopSellingProducts
+        arguments:
+            - "@uvinum_api_client"
     look_for_instagram_post_use_case:
         class: SocialDataPool\Application\Service\Core\WithEventHandling
         arguments:
@@ -7,7 +11,8 @@ services:
     look_for_instagram_post_use_case_original:
         class: SocialDataPool\Application\Service\Instagram\LookForInstagramPost
         arguments:
-            - "@instagram_client"
+            - "@instagram_api_client"
+            - "@uvinum_api_client"
             - "@instagram_processor"
     instagram_processor:
         class: SocialDataPool\Domain\Service\Instagram\InstagramPostProcessor
@@ -35,6 +40,7 @@ services:
         public: false
         arguments:
             - "@twitter_api_client"
+            - "@uvinum_api_client"
             - "@tweet_processor"
     tweet_processor:
         class: SocialDataPool\Domain\Service\Twitter\TweetProcessor
@@ -63,9 +69,13 @@ services:
             - "%redis_parameters%"
     instagram_authentication_controller:
         class: SocialDataPoolBundle\Bundle\Controller\InstagramAuthenticationController
-    instagram_client:
-        class: SocialDataPool\Infrastructure\Api\Instagram\Client
+    instagram_api_client:
+        class: SocialDataPool\Infrastructure\Api\Instagram\InstagramApiClient
         arguments:
             - "%instagram_client_id%"
             - "%instagram_client_secret%"
             - "http://ubuntu.dev/winegram_social_data_pool/web/app_dev.php/instagram/code"
+    uvinum_api_client:
+        class: SocialDataPool\Infrastructure\Api\Uvinum\UvinumApiClient
+        arguments:
+            - "%uvinum_api_key%"

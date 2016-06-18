@@ -26,8 +26,10 @@ class DefaultController extends Controller
         {
             $this->forward('SocialDataPoolBundle:InstagramAuthentication:index');
         }
-
-        $instagram_client = $this->get('instagram_client');
+        $uinvum_api_client = $this->get('uvinum_api_client');
+        $response = $uinvum_api_client->getTopSellingWines('blanco');
+        dump($response->json());
+        $instagram_client = $this->get('instagram_api_client');
         $instagram_client->setAccessToken($session_service->get('instagram_token'));
         dump($instagram_client->getTagMedia('vino'));
         

@@ -4,7 +4,7 @@ namespace SocialDataPool\Infrastructure\Api\Instagram;
 
 use SocialDataPool\Infrastructure\Api\Instagram\Exception\InstagramException;
 
-class Client
+class InstagramApiClient
 {
     const API_URL             = 'https://api.instagram.com/v1/';
     const API_OAUTH_URL       = 'https://api.instagram.com/oauth/authorize';
