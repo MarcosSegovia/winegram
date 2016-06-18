@@ -17,7 +17,7 @@ final class LookForPostBySpecificDoCommand extends ContainerAwareCommand
     {
         $this
             ->setName('instagram:search-specific-do')
-            ->setDescription('Look for new instagram posts by the top selling products in Uvinum and save them in Redis.'
+            ->setDescription('Look for new instagram posts by an specific DO and save them in Redis.'
             )
             ->addArgument(
                 'offset',
@@ -45,9 +45,10 @@ final class LookForPostBySpecificDoCommand extends ContainerAwareCommand
         $specific_do_to_search_for = $uvinum_use_case->__invoke($uvinum_request);
         $specific_do_to_search_for = str_replace(' ', '', $specific_do_to_search_for);
 
+        $output->writeln('Searching Instagram posts with tag: ' . $specific_do_to_search_for);
+
         $request = new LookForInstagramPostRequest($specific_do_to_search_for
         );
-
         $instagram_use_case->__invoke($request);
 
         $output->writeln('Instagram Posts Processed');

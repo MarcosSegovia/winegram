@@ -22,14 +22,14 @@ final class LookForTweetCommand extends ContainerAwareCommand
                 'The string you want to search for'
             )
             ->addArgument(
-                'language',
-                InputArgument::OPTIONAL,
-                'The language to look for the tweets'
-            )
-            ->addArgument(
                 'count',
                 InputArgument::OPTIONAL,
                 'The number of tweets to provide'
+            )
+            ->addArgument(
+                'language',
+                InputArgument::OPTIONAL,
+                'The language to look for the tweets'
             );
     }
 
@@ -42,10 +42,10 @@ final class LookForTweetCommand extends ContainerAwareCommand
         $use_case = $this->getContainer()->get('look_for_tweet_use_case');
 
         $query    = $input->getArgument('query');
-        $language = $input->getArgument('language');
         $count    = $input->getArgument('count');
+        $language = $input->getArgument('language');
 
-        $request = $this->buildRequest($query, $language, $count);
+        $request = $this->buildRequest($query,$count, $language);
 
         $use_case->__invoke($request);
 
@@ -54,22 +54,22 @@ final class LookForTweetCommand extends ContainerAwareCommand
 
     private function buildRequest(
         $query,
-        $language,
-        $count
+        $count,
+        $language
     )
     {
-        if (null === $language)
+        if (null === $count)
         {
             return new LookForTweetRequest($query);
         }
         else
         {
-            if (null === $count)
+            if (null === $language)
             {
-                return new LookForTweetRequest($query, $language);
+                return new LookForTweetRequest($query, $count);
             }
 
-            return new LookForTweetRequest($query, $language, $count);
+            return new LookForTweetRequest($query, $count, $language);
         }
     }
 }

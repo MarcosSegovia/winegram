@@ -27,7 +27,7 @@ final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
             ->addArgument(
                 'offset',
                 InputArgument::OPTIONAL,
-                'Pagination for top selling products'
+                'Specific top selling product'
             );
     }
 
@@ -50,9 +50,11 @@ final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
         $uvinum_request                         = new GetTopSellingProductRequest($wine_type, $offset);
         $specific_product_to_search_for         = $uvinum_use_case->__invoke($uvinum_request);
         $specific_product_to_search_for['name'] = str_replace(' ', '', $specific_product_to_search_for['name']);
-        $request                                = new LookForInstagramPostRequest($specific_product_to_search_for['name']
-        );
 
+        $output->writeln('Searching Instagram posts with tag: ' . $specific_product_to_search_for['name']);
+
+        $request = new LookForInstagramPostRequest($specific_product_to_search_for['name']
+        );
         $instagram_use_case->__invoke($request);
 
         $output->writeln('Instagram Posts Processed');

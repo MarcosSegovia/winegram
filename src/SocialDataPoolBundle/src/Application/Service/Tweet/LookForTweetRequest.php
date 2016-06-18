@@ -8,20 +8,20 @@ final class LookForTweetRequest
     private $query;
 
     /** @var string */
-    private $language;
+    private $number_of_tweets;
 
     /** @var string */
-    private $number_of_tweets;
+    private $language;
 
     public function __construct(
         $a_query,
-        $a_language = 'es',
-        $some_number_of_tweets = '1'
+        $some_number_of_tweets = '1',
+        $a_language = 'es'
     )
     {
         $this->query            = $a_query;
-        $this->language         = $a_language;
         $this->number_of_tweets = $some_number_of_tweets;
+        $this->language         = $a_language;
     }
 
     public function query()
@@ -29,13 +29,13 @@ final class LookForTweetRequest
         return $this->query;
     }
 
-    public function language()
-    {
-        return $this->language;
-    }
-
     public function numberOfTweets()
     {
         return $this->number_of_tweets;
+    }
+
+    public function language()
+    {
+        return $this->language;
     }
 }
