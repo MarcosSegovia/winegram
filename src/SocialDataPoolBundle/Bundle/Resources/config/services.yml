@@ -1,6 +1,10 @@
 services:
-    get_top_selling_products_use_case:
-        class: SocialDataPool\Application\Service\Uvinum\GetTopSellingProducts
+    get_specific_do_use_case:
+        class: SocialDataPool\Application\Service\Uvinum\GetSpecificDo
+        arguments:
+            - "@uvinum_api_client"
+    get_top_selling_product_use_case:
+        class: SocialDataPool\Application\Service\Uvinum\GetTopSellingProduct
         arguments:
             - "@uvinum_api_client"
     look_for_instagram_post_use_case:

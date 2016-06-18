@@ -6,7 +6,8 @@ use GuzzleHttp\Client;
 
 final class UvinumApiClient
 {
-    const BASE_UVINUM_API_URL = 'https://api.vcst.net';
+    const NUMBER_OF_PRODUCTS_PER_PAGE = 20;
+    const BASE_UVINUM_API_URL         = 'https://api.vcst.net';
 
     private $http_client;
 

@@ -2,7 +2,7 @@
 
 namespace SocialDataPool\Application\Service\Uvinum;
 
-final class GetTopSellingProductsRequest
+final class GetTopSellingProductRequest
 {
     /** @var string */
     private $wine_type;
