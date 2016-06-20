@@ -9,15 +9,20 @@ final class JsonAdapter
     /** @var array */
     private $my_array_of_social_data;
 
-    public function __invoke($a_twitter_response_to_adapt)
+    public function __invoke($a_twitter_response_to_adapt, $a_product_id = null)
     {
         $this->my_array_of_social_data = [];
 
-        $this->my_array_of_social_data['id']   = $a_twitter_response_to_adapt['id_str'];
-        $this->my_array_of_social_data['type'] = Tweet::TWITTER_TYPE;
-        $this->my_array_of_social_data['text'] = $a_twitter_response_to_adapt['text'];
-        $this->my_array_of_social_data['retweet_count'] = $a_twitter_response_to_adapt['retweet_count'];
+        $this->my_array_of_social_data['id']             = $a_twitter_response_to_adapt['id_str'];
+        $this->my_array_of_social_data['type']           = Tweet::TWITTER_TYPE;
+        $this->my_array_of_social_data['text']           = $a_twitter_response_to_adapt['text'];
+        $this->my_array_of_social_data['retweet_count']  = $a_twitter_response_to_adapt['retweet_count'];
         $this->my_array_of_social_data['favorite_count'] = $a_twitter_response_to_adapt['favorite_count'];
+
+        if (null !== $a_product_id)
+        {
+            $this->my_array_of_social_data['uvinum_product_id'] = $a_product_id;
+        }
 
         foreach ($a_twitter_response_to_adapt['entities']['hashtags'] as $current_hashtag)
         {

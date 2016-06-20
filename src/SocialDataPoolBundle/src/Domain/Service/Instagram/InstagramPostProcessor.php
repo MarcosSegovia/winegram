@@ -29,7 +29,10 @@ final class InstagramPostProcessor
         $this->json_instagram_adapter = $an_instagram_json_adapter;
     }
 
-    public function __invoke($all_raw_instagram_posts_to_process)
+    public function __invoke(
+        $all_raw_instagram_posts_to_process,
+        $a_product_id = null
+    )
     {
         foreach ($all_raw_instagram_posts_to_process as $raw_instagram_post)
         {
@@ -37,7 +40,7 @@ final class InstagramPostProcessor
             {
                 continue;
             }
-            $post_information_encoded = $this->json_instagram_adapter->__invoke($raw_instagram_post);
+            $post_information_encoded = $this->json_instagram_adapter->__invoke($raw_instagram_post, $a_product_id);
             $a_new_post_to_persist    = new Post($raw_instagram_post->id, $post_information_encoded);
             $this->instagram_posts_writer->persistNewPost($a_new_post_to_persist);
             $this->instagram_posts_writer->tagPostAsRead($a_new_post_to_persist);

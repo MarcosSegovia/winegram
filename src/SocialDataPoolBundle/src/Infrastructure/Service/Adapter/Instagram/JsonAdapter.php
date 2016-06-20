@@ -9,7 +9,10 @@ final class JsonAdapter
     /** @var array */
     private $my_array_of_social_data;
 
-    public function __invoke($an_instagram_post_response_to_adapt)
+    public function __invoke(
+        $an_instagram_post_response_to_adapt,
+        $a_product_id = null
+    )
     {
         $this->my_array_of_social_data = [];
 
@@ -21,6 +24,11 @@ final class JsonAdapter
         $this->my_array_of_social_data['url_images']['standard']  = $an_instagram_post_response_to_adapt->images->standard_resolution->url;
         $this->my_array_of_social_data['likes']                   = $an_instagram_post_response_to_adapt->likes->count;
 
+        if (null !== $a_product_id)
+        {
+            $this->my_array_of_social_data['uvinum_product_id'] = $a_product_id;
+        }
+        
         foreach ($an_instagram_post_response_to_adapt->tags as $current_hashtag)
         {
             $this->my_array_of_social_data['tags'][] = $current_hashtag;

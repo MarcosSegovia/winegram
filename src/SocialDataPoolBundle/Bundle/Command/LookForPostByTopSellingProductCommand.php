@@ -51,7 +51,8 @@ final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
 
         $output->writeln('Searching Instagram posts with tag: ' . $specific_product_to_search_for['name']);
 
-        $request = new LookForInstagramPostRequest($specific_product_to_search_for['name']
+        $request = new LookForInstagramPostRequest($specific_product_to_search_for['name'],
+            $specific_product_to_search_for['product_id']
         );
         $instagram_use_case->__invoke($request);
 

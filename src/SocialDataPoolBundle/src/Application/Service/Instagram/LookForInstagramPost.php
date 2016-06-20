@@ -33,6 +33,6 @@ final class LookForInstagramPost implements ApplicationService
     {
         /** @var LookForInstagramPostRequest $a_request */
         $api_response = $this->instagram_api_client->getTagMedia($a_request->query());
-        $this->instagram_post_processor->__invoke($api_response->data);
+        $this->instagram_post_processor->__invoke($api_response->data, $a_request->productId());
     }
 }

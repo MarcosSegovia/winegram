@@ -24,12 +24,15 @@ final class TweetProcessor
         JsonAdapter $a_json_twitter_adapter
     )
     {
-        $this->tweet_writer         = $a_tweet_writer;
-        $this->tweet_reader         = $a_tweet_reader;
+        $this->tweet_writer = $a_tweet_writer;
+        $this->tweet_reader = $a_tweet_reader;
         $this->json_twitter_adapter = $a_json_twitter_adapter;
     }
 
-    public function __invoke($all_raw_tweets_to_process)
+    public function __invoke(
+        $all_raw_tweets_to_process,
+        $a_product_id = null
+    )
     {
         foreach ($all_raw_tweets_to_process['statuses'] as $tweet_raw_info)
         {
@@ -37,7 +40,7 @@ final class TweetProcessor
             {
                 continue;
             }
-            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_raw_info);
+            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_raw_info, $a_product_id);
             $a_new_tweet_to_persist    = new Tweet($tweet_raw_info['id_str'], $tweet_information_encoded);
             $this->tweet_writer->persistNewTweet($a_new_tweet_to_persist);
             $this->tweet_writer->tagTweetAsRead($a_new_tweet_to_persist);

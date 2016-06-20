@@ -52,7 +52,7 @@ final class LookForTweetByTopSellingProductCommand extends ContainerAwareCommand
 
         $output->writeln('Searching tweets that contains: ' . $specific_product_to_search_for['name']);
 
-        $twitter_request = $this->buildTwitterRequest($specific_product_to_search_for['name'], $number_of_tweets);
+        $twitter_request = $this->buildTwitterRequest($specific_product_to_search_for['name'], $number_of_tweets, $specific_product_to_search_for['product_id']);
         $use_case->__invoke($twitter_request);
 
         $output->writeln('Tweets Processed');
@@ -60,14 +60,11 @@ final class LookForTweetByTopSellingProductCommand extends ContainerAwareCommand
 
     private function buildTwitterRequest(
         $query,
-        $number_of_tweets
+        $number_of_tweets = '1',
+        $product_id = null,
+        $language = 'es'
     )
     {
-        if (null === $number_of_tweets)
-        {
-            return new LookForTweetRequest($query);
-        }
-
-        return new LookForTweetRequest($query, $number_of_tweets);
+        return new LookForTweetRequest($query, $number_of_tweets, $language, $product_id);
     }
 }

@@ -37,11 +37,6 @@ final class LookForTweet implements ApplicationService
             $a_request->numberOfTweets()
         );
 
-        $this->processTweets($api_response->json());
-    }
-
-    private function processTweets($all_tweets_to_process)
-    {
-        $this->tweet_processor->__invoke($all_tweets_to_process);
+        $this->tweet_processor->__invoke($api_response->json(), $a_request->productId());
     }
 }
