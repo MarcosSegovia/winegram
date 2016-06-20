@@ -3,8 +3,8 @@ social_data_pool_homepage:
     defaults: { _controller: "SocialDataPoolBundle:Default:index" }
 
 social_data_pool_instagram:
-    path:     /test
-    defaults: { _controller: "SocialDataPoolBundle:Default:index2" }
+    path:     /authenticate
+    defaults: { _controller: "SocialDataPoolBundle:Default:authentication" }
 
 social_data_pool_twitter:
     path: /twitter

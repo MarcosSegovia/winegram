@@ -19,19 +19,14 @@ class DefaultController extends Controller
         return new Response('Success');
     }
 
-    public function index2Action()
+    public function authenticationAction()
     {
         $session_service = $this->get('session');
         if(!$session_service->isStarted() || !$session_service->has('instagram_token'))
         {
             $this->forward('SocialDataPoolBundle:InstagramAuthentication:index');
         }
-        $uinvum_api_client = $this->get('uvinum_api_client');
-        $response = $uinvum_api_client->getTopSellingWines('blanco');
-        dump($response->json());
-        $instagram_client = $this->get('instagram_api_client');
-        $instagram_client->setAccessToken($session_service->get('instagram_token'));
-        dump($instagram_client->getTagMedia('vino'));
+        dump($session_service->get('instagram_token'));
         
         return new Response('OK');
     }
