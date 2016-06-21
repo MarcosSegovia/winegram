@@ -26,7 +26,7 @@ class RedisClient implements RedisClientInterface
 
     public function get($a_key)
     {
-        return $this->redis_client->get($key);
+        return $this->redis_client->get($a_key);
     }
 
     public function set(
