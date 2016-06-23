@@ -7,8 +7,8 @@ use SocialDataPool\Domain\Repository\Instagram\InstagramReaderInterface;
 
 final class RedisInstagramReader implements InstagramReaderInterface
 {
-    const LIST_OF_INSTAGRAM_POSTS = 'instagram-list';
-    const UNIQUE_ID_PREFIX        = 'instagram-post_';
+    const SOCIAL_POOL      = 'social-list';
+    const UNIQUE_ID_PREFIX = 'instagram-post_';
 
     private $redis_client;
 
@@ -19,7 +19,7 @@ final class RedisInstagramReader implements InstagramReaderInterface
 
     public function getPost()
     {
-        return $this->redis_client->lpop(self::LIST_OF_INSTAGRAM_POSTS);
+        return $this->redis_client->lpop(self::SOCIAL_POOL);
     }
 
     public function checkIfPostIdHasBeenAlreadyProcessed($current_post_id)

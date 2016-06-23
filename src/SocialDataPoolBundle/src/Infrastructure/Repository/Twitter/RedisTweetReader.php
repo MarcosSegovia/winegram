@@ -7,7 +7,7 @@ use SocialDataPool\Domain\Repository\Twitter\TweetReaderInterface;
 
 class RedisTweetReader implements TweetReaderInterface
 {
-    const LIST_OF_TWEETS   = 'tweets-list';
+    const SOCIAL_POOL      = 'social-list';
     const UNIQUE_ID_PREFIX = 'tweet_';
 
     private $redis_client;
@@ -19,7 +19,7 @@ class RedisTweetReader implements TweetReaderInterface
 
     public function getTweet()
     {
-        return $this->redis_client->lpop(self::LIST_OF_TWEETS);
+        return $this->redis_client->lpop(self::SOCIAL_POOL);
     }
 
     public function checkIfTweetIdHasBeenAlreadyProcessed($current_tweet_id)
