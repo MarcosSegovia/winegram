@@ -21,9 +21,9 @@ final class JsonAdapter
         $this->my_array_of_social_data['text']     = $a_twitter_response_to_adapt['text'];
         $this->my_array_of_social_data['username'] = $a_twitter_response_to_adapt['user']['name'];
 
-        if (array_key_exists('media_url', $a_twitter_response_to_adapt['entities']))
+        if (array_key_exists('media', $a_twitter_response_to_adapt['entities']))
         {
-            $this->my_array_of_social_data['media'] = $a_twitter_response_to_adapt['entities']['media_url'];
+            $this->my_array_of_social_data['media'] = $a_twitter_response_to_adapt['entities']['media'][0]['media_url'];
         }
         else
         {
