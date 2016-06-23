@@ -3,6 +3,7 @@
 namespace SocialDataPool\Application\Service\Instagram;
 
 use SocialDataPool\Application\Service\Core\ApplicationService;
+use SocialDataPool\Domain\Model\Core\Search;
 use SocialDataPool\Domain\Service\Instagram\InstagramPostProcessor;
 use SocialDataPool\Infrastructure\Api\Instagram\InstagramApiClient;
 use SocialDataPool\Infrastructure\Api\Uvinum\UvinumApiClient;
@@ -33,6 +34,7 @@ final class LookForInstagramPost implements ApplicationService
     {
         /** @var LookForInstagramPostRequest $a_request */
         $api_response = $this->instagram_api_client->getTagMedia($a_request->query());
-        $this->instagram_post_processor->__invoke($api_response->data, $a_request->productId());
+        $search_data = new Search($a_request->searchId(), $a_request->query(), $a_request->relatedSearchContent());
+        $this->instagram_post_processor->__invoke($api_response->data, $search_data);
     }
 }

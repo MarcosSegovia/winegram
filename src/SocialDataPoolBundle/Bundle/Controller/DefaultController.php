@@ -13,7 +13,7 @@ class DefaultController extends Controller
         $use_case = $this->get('look_for_tweet_use_case');
 
         $query_to_send = '"Pruno"';
-        $request       = new LookForTweetRequest($query_to_send);
+        $request       = new LookForTweetRequest($query_to_send, 1, 'pam');
         $use_case->__invoke($request);
 
         return new Response('Success');

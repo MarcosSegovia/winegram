@@ -11,6 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class LookForPostCommand extends ContainerAwareCommand
 {
+    const SEARCH_ID      = 3;
+    const SEARCH_CONTENT = '';
+
     protected function configure()
     {
         $this
@@ -36,7 +39,7 @@ final class LookForPostCommand extends ContainerAwareCommand
         $token            = $this->getContainer()->getParameter('instagram_token');
         $instagram_client->setAccessToken($token);
 
-        $request = new LookForInstagramPostRequest($query);
+        $request = new LookForInstagramPostRequest($query, self::SEARCH_ID, self::SEARCH_CONTENT);
         $use_case->__invoke($request);
 
         $output->writeln('Instagram Posts Processed');

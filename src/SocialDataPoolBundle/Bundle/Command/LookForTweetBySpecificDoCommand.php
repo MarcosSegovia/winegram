@@ -13,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class LookForTweetBySpecificDoCommand extends ContainerAwareCommand
 {
+    const SEARCH_ID = 2;
+
     protected function configure()
     {
         $this
@@ -46,7 +48,10 @@ final class LookForTweetBySpecificDoCommand extends ContainerAwareCommand
 
         $output->writeln('Searching tweets that contains: ' . $specific_do_to_search_for);
 
-        $twitter_request = $this->buildTwitterRequest($specific_do_to_search_for, $number_of_tweets);
+        $twitter_request = $this->buildTwitterRequest($specific_do_to_search_for,
+            $uvinum_request->offset(),
+            $number_of_tweets
+        );
         $use_case->__invoke($twitter_request);
 
         $output->writeln('Tweets Processed');
@@ -54,14 +59,15 @@ final class LookForTweetBySpecificDoCommand extends ContainerAwareCommand
 
     private function buildTwitterRequest(
         $query,
+        $search_related_content,
         $number_of_tweets
     )
     {
         if (null === $number_of_tweets)
         {
-            return new LookForTweetRequest($query);
+            return new LookForTweetRequest($query, self::SEARCH_ID, $search_related_content);
         }
 
-        return new LookForTweetRequest($query, $number_of_tweets);
+        return new LookForTweetRequest($query, self::SEARCH_ID, $search_related_content, $number_of_tweets);
     }
 }

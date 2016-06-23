@@ -1,14 +1,14 @@
 <?php
 
-namespace SocialDataPool\Domain\Model\Instagram;
+namespace SocialDataPool\Domain\Model\Core;
 
 use SocialDataPool\Domain\Model\Event\DomainEvent;
 
-final class InstagramPostCreated extends DomainEvent
+final class SocialCreated extends DomainEvent
 {
-    const EVENT_NAME = 'Instagram_post_created';
+    const EVENT_NAME = 'Social_created';
 
-    /** @var string */
+    /** @var integer */
     private $id;
 
     public function __construct($an_id)

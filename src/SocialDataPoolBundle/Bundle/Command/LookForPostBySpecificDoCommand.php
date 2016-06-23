@@ -13,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class LookForPostBySpecificDoCommand extends ContainerAwareCommand
 {
+    const SEARCH_ID = 2;
+
     protected function configure()
     {
         $this
@@ -45,7 +47,9 @@ final class LookForPostBySpecificDoCommand extends ContainerAwareCommand
 
         $output->writeln('Searching Instagram posts with tag: ' . $specific_do_to_search_for);
 
-        $request = new LookForInstagramPostRequest($specific_do_to_search_for
+        $request = new LookForInstagramPostRequest($specific_do_to_search_for,
+            self::SEARCH_ID,
+            $uvinum_request->offset()
         );
         $instagram_use_case->__invoke($request);
 

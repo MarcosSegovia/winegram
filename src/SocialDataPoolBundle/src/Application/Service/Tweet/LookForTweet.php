@@ -4,6 +4,7 @@ namespace SocialDataPool\Application\Service\Tweet;
 
 use MarcosSegovia\Twitter\TwitterApiClient;
 use SocialDataPool\Application\Service\Core\ApplicationService;
+use SocialDataPool\Domain\Model\Core\Search;
 use SocialDataPool\Domain\Service\Twitter\TweetProcessor;
 use SocialDataPool\Infrastructure\Api\Uvinum\UvinumApiClient;
 
@@ -36,7 +37,9 @@ final class LookForTweet implements ApplicationService
             $a_request->language(),
             $a_request->numberOfTweets()
         );
-
-        $this->tweet_processor->__invoke($api_response->json(), $a_request->productId());
+        
+        $search_data = new Search($a_request->searchId(), $a_request->query(), $a_request->relatedSearchContent()
+        );
+        $this->tweet_processor->__invoke($api_response->json(), $search_data);
     }
 }

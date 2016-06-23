@@ -13,6 +13,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
 {
+    const SEARCH_ID = 1;
+
     protected function configure()
     {
         $this
@@ -51,7 +53,7 @@ final class LookForPostByTopSellingProductCommand extends ContainerAwareCommand
 
         $output->writeln('Searching Instagram posts with tag: ' . $specific_product_to_search_for['name']);
 
-        $request = new LookForInstagramPostRequest($specific_product_to_search_for['name'],
+        $request = new LookForInstagramPostRequest($specific_product_to_search_for['name'], self::SEARCH_ID,
             $specific_product_to_search_for['product_id']
         );
         $instagram_use_case->__invoke($request);

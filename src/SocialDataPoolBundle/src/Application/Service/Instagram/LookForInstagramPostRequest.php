@@ -7,16 +7,21 @@ final class LookForInstagramPostRequest
     /** @var string */
     private $query;
 
+    /** @var integer */
+    private $search_id;
+
     /** @var string */
-    private $product_id;
+    private $related_search_content;
 
     public function __construct(
         $a_query,
-        $a_product_id = null
+        $a_search_id,
+        $a_related_search_content
     )
     {
-        $this->query      = $a_query;
-        $this->product_id = $a_product_id;
+        $this->query                  = $a_query;
+        $this->search_id              = $a_search_id;
+        $this->related_search_content = $a_related_search_content;
     }
 
     public function query()
@@ -24,8 +29,13 @@ final class LookForInstagramPostRequest
         return $this->query;
     }
 
-    public function productId()
+    public function searchId()
     {
-        return $this->product_id;
+        return $this->search_id;
+    }
+
+    public function relatedSearchContent()
+    {
+        return $this->related_search_content;
     }
 }

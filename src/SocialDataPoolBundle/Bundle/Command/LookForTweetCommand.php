@@ -11,6 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class LookForTweetCommand extends ContainerAwareCommand
 {
+    const SEARCH_ID      = 3;
+    const SEARCH_CONTENT = '';
+
     protected function configure()
     {
         $this
@@ -59,16 +62,16 @@ final class LookForTweetCommand extends ContainerAwareCommand
     {
         if (null === $count)
         {
-            return new LookForTweetRequest($query);
+            return new LookForTweetRequest($query, self::SEARCH_ID, self::SEARCH_CONTENT);
         }
         else
         {
             if (null === $language)
             {
-                return new LookForTweetRequest($query, $count);
+                return new LookForTweetRequest($query, self::SEARCH_ID, self::SEARCH_CONTENT, $count);
             }
 
-            return new LookForTweetRequest($query, $count, $language);
+            return new LookForTweetRequest($query, self::SEARCH_ID, self::SEARCH_CONTENT, $count, $language);
         }
     }
 }

@@ -3,6 +3,7 @@
 namespace SocialDataPool\Domain\Model\Instagram;
 
 use SocialDataPool\Domain\Model\Core\Social;
+use SocialDataPool\Domain\Model\Core\SocialCreated;
 use SocialDataPool\Domain\Model\Instagram\Exception\InvalidInstagramPostDataProvided;
 use SocialDataPool\Infrastructure\EventQueue\DomainEventRecorder;
 
@@ -32,7 +33,7 @@ final class Post
         $this->id              = $an_id;
         $this->associated_data = $some_new_associated_data;
 
-        DomainEventRecorder::instance()->recordMessage(new InstagramPostCreated($an_id));
+        DomainEventRecorder::instance()->recordMessage(new SocialCreated($an_id));
     }
 
     public function id()

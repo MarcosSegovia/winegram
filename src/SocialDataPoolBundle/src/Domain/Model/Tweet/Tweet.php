@@ -2,6 +2,7 @@
 
 namespace SocialDataPool\Domain\Model\Tweet;
 
+use SocialDataPool\Domain\Model\Core\SocialCreated;
 use SocialDataPool\Domain\Model\Tweet\Exception\InvalidTweetDataProvided;
 use SocialDataPool\Infrastructure\EventQueue\DomainEventRecorder;
 
@@ -31,7 +32,7 @@ final class Tweet
         $this->id = $an_id;
         $this->associated_data = $some_new_associated_data;
 
-        DomainEventRecorder::instance()->recordMessage(new TweetCreated($an_id));
+        DomainEventRecorder::instance()->recordMessage(new SocialCreated($an_id));
     }
 
     public function id()

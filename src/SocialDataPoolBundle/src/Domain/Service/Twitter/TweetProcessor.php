@@ -2,6 +2,7 @@
 
 namespace SocialDataPool\Domain\Service\Twitter;
 
+use SocialDataPool\Domain\Model\Core\Search;
 use SocialDataPool\Domain\Model\Tweet\Tweet;
 use SocialDataPool\Domain\Repository\Twitter\TweetReaderInterface;
 use SocialDataPool\Domain\Repository\Twitter\TweetWriterInterface;
@@ -31,7 +32,7 @@ final class TweetProcessor
 
     public function __invoke(
         $all_raw_tweets_to_process,
-        $a_product_id = null
+        Search $a_search
     )
     {
         foreach ($all_raw_tweets_to_process['statuses'] as $tweet_raw_info)
@@ -40,7 +41,7 @@ final class TweetProcessor
             {
                 continue;
             }
-            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_raw_info, $a_product_id);
+            $tweet_information_encoded = $this->json_twitter_adapter->__invoke($tweet_raw_info, $a_search);
             $a_new_tweet_to_persist    = new Tweet($tweet_raw_info['id_str'], $tweet_information_encoded);
             $this->tweet_writer->persistNewTweet($a_new_tweet_to_persist);
             $this->tweet_writer->tagTweetAsRead($a_new_tweet_to_persist);
