@@ -19,7 +19,7 @@ final class CronTweetsCommand extends ContainerAwareCommand
     {
         $this
             ->setName('twitter:search-all')
-            ->setDescription('Look for new tweets by the top selling products in Uvinum and save them in Redis.')
+            ->setDescription('Look for new tweets by the top selling products and DOs in Uvinum and save them in Redis.')
             ->addArgument(
                 'wine-type',
                 InputArgument::REQUIRED,
@@ -55,7 +55,6 @@ final class CronTweetsCommand extends ContainerAwareCommand
         }
 
         $uvinum_use_case = $this->getContainer()->get('get_specific_do_use_case');
-        $use_case        = $this->getContainer()->get('look_for_tweet_use_case');
 
         for ($wine_type_index = 0; $wine_type_index < 13; $wine_type_index++)
         {
