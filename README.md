@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/MarcosSegovia/winegram_social_data_pool.svg?branch=master)](https://travis-ci.org/MarcosSegovia/winegram_social_data_pool)
 
 # winegram_social_data_pool
-========
 
 Data Crawler for the Winegram project.
 
